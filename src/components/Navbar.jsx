@@ -61,7 +61,7 @@ function Navbar () {
           </div>
         }
       />
-      <div className='flex-auto'>
+      <div className='flex'>
         <NavButton
           title='Cart'
           customFunc={() => handleClick('cart')}
