@@ -1,4 +1,5 @@
-import React from 'react'
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { FiSettings } from 'react-icons/fi'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
@@ -17,13 +18,13 @@ import {
   Area,
   Bar,
   Pie,
-  Financial,
   ColorPicker,
-  ColorMapping,
-  Editor
+  Editor,
+  ColorMapping
 } from './pages'
 import './App.css'
 import { useStateContext } from './contexts/ContextProvider'
+import Financial from './pages/Charts/Financial'
 
 export const App = () => {
   const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext()
@@ -35,7 +36,7 @@ export const App = () => {
             <TooltipComponent content='Settings' position='Top'>
               <button
                 type='button'
-                className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white'
+                className='text-3x1 p-3 hover:drop-shadow hover:bg-light-gray text-white'
                 onClick={() => setThemeSettings(true)}
                 style={{ background: currentColor, borderRadius: '50%' }}
               >
@@ -57,14 +58,14 @@ export const App = () => {
           <div
             className={
               activeMenu
-                ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen ml-72 w-full'
-                : 'bg-main-bg dark:bg-main-dark-bg w-full h-screen flex-2'
+                ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full'
+                : 'bg-main-bg dark:bg-main-dark-bg w-full min-h-screen flex-2'
             }
           >
-            <div>
+            <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
               <Navbar />
             </div>
-            {/* .................. */}
+            {/* ---- */}
             <div>
               {themeSettings && <ThemeSettings />}
               <Routes>
@@ -81,7 +82,6 @@ export const App = () => {
                 <Route path='/calendar' element={<Calendar />} />
                 <Route path='/color-picker' element={<ColorPicker />} />
                 {/* Graficos */}
-                <Route path='/' element={<Ecommerce />} />
                 <Route path='/line' element={<Line />} />
                 <Route path='/area' element={<Area />} />
                 <Route path='/bar' element={<Bar />} />
@@ -89,7 +89,7 @@ export const App = () => {
                 <Route path='/financial' element={<Financial />} />
                 <Route path='/color-mapping' element={<ColorMapping />} />
                 <Route path='/pyramid' element={<Pyramid />} />
-                <Route path='/stacked' element={<Stacked />} />
+                <Route path='/staked' element={<Stacked />} />
               </Routes>
             </div>
           </div>

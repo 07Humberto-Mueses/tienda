@@ -6,8 +6,8 @@ import { themeColors } from '../data/dummy'
 import { useStateContext } from '../contexts/ContextProvider'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
-function ThemeSettings () {
-  const { setThemeSettings, setMode, setColor, currentMode, currentColor } = useStateContext()
+const ThemeSettings = () => {
+  const { setThemeSettings, setMode, setColor, currentColor, currentMode } = useStateContext()
   return (
     <div className='bg-half-transparent w-screen fixed nav-item top-0 right-0'>
       <div className='float-right h-screen dark:text-gray-600 bg-white dark:[#484852] w-400'>
@@ -23,7 +23,7 @@ function ThemeSettings () {
           </button>
         </div>
         <div className='flex-col border-t-1 border-color p-4 ml-4'>
-          <p className='font-semibold text-lg'>Opciones de temas</p>
+          <p className='font-semibold text-lg'>Oopciones de temas</p>
           <div className='mt-4'>
             <input
               type='radio'
@@ -69,7 +69,7 @@ function ThemeSettings () {
                 position='TopCenter'
               >
                 <div
-                  className='relative mt-2 cursor-pointer flex gap-5 items-5'
+                  className='relative mt-2 cursor-pointer flex gap-5 items-center'
                   key={item.name}
                 >
                   <button
@@ -79,7 +79,6 @@ function ThemeSettings () {
                     onClick={() => setColor(item.color)}
                   >
                     <BsCheck
-                      // eslint-disable-next-line no-constant-condition
                       className={`ml-2 text-2xl text-white ${item.color === currentColor ? 'block' : 'hidden'}`}
                     />
                   </button>

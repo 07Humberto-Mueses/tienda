@@ -3,12 +3,12 @@ import { SparklineComponent, Inject, SparklineTooltip } from '@syncfusion/ej2-re
 
 class SparkLine extends React.PureComponent {
   render () {
-    const { id, height, width, color, data, type, currentColor } = this.props
+    const { id, height, widht, color, data, type, currentColor } = this.props
     return (
       <SparklineComponent
         id={id}
         height={height}
-        width={width}
+        widht={widht}
         lineWidth={1}
         valueType='Numeric'
         fill={color}
@@ -21,7 +21,7 @@ class SparkLine extends React.PureComponent {
           visible: true,
           // eslint-disable-next-line no-template-curly-in-string
           format: '${x} : data ${yval}',
-          trackLineSettings: {
+          TrackLineSettings: {
             visible: true
           }
         }}
@@ -31,4 +31,5 @@ class SparkLine extends React.PureComponent {
     )
   }
 }
+
 export default SparkLine

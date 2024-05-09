@@ -5,18 +5,21 @@ import { BsChatLeft } from 'react-icons/bs'
 import { RiNotification3Line } from 'react-icons/ri'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Cart, Chat, Notification, UserProfile } from '.'
-import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 
+import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import avatar from '../data/avatar.jpg'
 import { useStateContext } from '../contexts/ContextProvider'
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-  <TooltipComponent content={title} position='BottomCenter'>
+  <TooltipComponent
+    content={title}
+    position='BottomCenter'
+  >
     <button
       type='button'
       onClick={customFunc}
       style={{ color }}
-      className='relative text-xl rounded-full p-3 hover:bg-black' // light-gray
+      className='relative text_xl rounded-full p-3 hover:bg-light-gray'
     >
       <span
         style={{ background: dotColor }}
@@ -29,10 +32,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 function Navbar () {
-  const {
-    // eslint-disable-next-line no-unused-vars
-    currentColor, activeMenu, setActiveMenu, handleClick, isClicked, screenSize, setScreenSize
-  } = useStateContext()
+  // eslint-disable-next-line no-unused-vars
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, screenSize, setScreenSize } = useStateContext()
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth)
@@ -40,6 +41,7 @@ function Navbar () {
     handleResize()
 
     return () => window.removeEventListener('resize', handleResize)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -48,15 +50,19 @@ function Navbar () {
     } else {
       setActiveMenu(true)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screenSize])
   return (
     <div className='flex justify-between p-2 md:mx-6 relative'>
       <NavButton
         title='Menu'
-        customFunc={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)}
+        customFunc={() =>
+          setActiveMenu((prevActiveMenu) =>
+            !prevActiveMenu
+          )}
         color={currentColor}
         icon={
-          <div style={{ fontSize: '18px' }}>
+          <div style={{ fontsize: '18px' }}>
             <AiOutlineMenu />
           </div>
         }
@@ -70,33 +76,33 @@ function Navbar () {
         />
         <NavButton
           title='Chat'
-          dotColor='#03C9d7'
+          dotColor='#03C9D7'
           customFunc={() => handleClick('chat')}
           color={currentColor}
           icon={<BsChatLeft />}
         />
         <NavButton
           title='Notification'
-          dotColor='#03C9d7'
+          dotColor='#03C9D7'
           customFunc={() => handleClick('notification')}
           color={currentColor}
           icon={<RiNotification3Line />}
         />
-        <TooltipComponent content='Profile' position='BottomCenter'>
+        <TooltipComponent
+          content='Profile'
+          position='BottomCenter'
+        >
           <div
             className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
             onClick={() => handleClick('userProfile')}
           >
             <img
               className='rounded-full w-8 h-8'
-              src={avatar}
-              alt='Imagen de perfil de usuario'
+              src={avatar} alt='imagen de perfil de usuario'
             />
             <p>
-              <span className='text-black-400 text-14'>Hola, </span>{' '}
-              <span className='text-black-400 font-bold ml-4 text-14'>
-                ChatBoot
-              </span>
+              <span className='text-gray-400 text-14'>Hola, </span> {' '}
+              <span className='text-gray-400 text-14 font-bold ml-1'>ChatBoot</span>
             </p>
             <MdKeyboardArrowDown className='text-gray-400 text-14' />
           </div>
