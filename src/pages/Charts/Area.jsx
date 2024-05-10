@@ -21,7 +21,7 @@ const Area = () => {
         tooltip={{ enable: true }}
         background={currentMode === 'Dark' ? '#33373E' : '#fff'}
       >
-        <Inject services={{ SplineAreaSeries, DateTime, Legend }} />
+        <Inject services={[SplineAreaSeries, DateTime, Legend]} />
         <SeriesCollectionDirective>
           {areaCustomSeries.map((item, index) =>
             <SeriesDirective
